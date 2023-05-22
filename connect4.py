@@ -240,7 +240,7 @@ def monte_carlo(start_board,p,power):
     win_num = []
     loose_num = []
     num = 0
-    
+    print_or_no = False
     for j in range(MAX):
         #print("Welcome")
         idx = idx + 1
@@ -285,7 +285,7 @@ def monte_carlo(start_board,p,power):
         win_or_not = 0
         first_move = True
     
-    if p == 10:
+    if print_or_no == True:
         print("IA win : " + str(win) + " IA loose : " + str(loose) + " IA draw : " + str(draw))
     n = return_element_the_least_list(loose_num)
     n2 = return_element_the_least_list(loose_num)
@@ -302,7 +302,7 @@ def monte_carlo(start_board,p,power):
             p_loose.append(calc_pourcentage(MAX,loose_num.count(i)))
     
     
-    if p == 10:
+    if print_or_no == True:
         print("pourcentage total: " ,p_all)
         print("pourcentage win: ", p_win)
         print("pourcentage loose: ", p_loose)
@@ -339,7 +339,7 @@ def monte_carlo_check(start_board,p,power):
     win_num = []
     loose_num = []
     num = 0
-    
+    print_or_no = False
     for j in range(MAX):
         while win_or_not == 0:
             xx , yy = make_random_move_monte_carlo(_board)
@@ -381,10 +381,12 @@ def monte_carlo_check(start_board,p,power):
         _board = copy.deepcopy(start_board)
         win_or_not = 0
         first_move = True
-    #print("ENEMY win : " + str(win) + " ENEMY loose : " + str(loose) + " ENEMY draw : " + str(draw))
+    if print_or_no == True:
+        print("ENEMY win : " + str(win) + " ENEMY loose : " + str(loose) + " ENEMY draw : " + str(draw))
     
     win_rate = calc_pourcentage(MAX,win)
-    #print("win rate enemy: " , win_rate)
+    if print_or_no == True:
+        print("win rate enemy: " , win_rate)
     
     return win_rate
 
