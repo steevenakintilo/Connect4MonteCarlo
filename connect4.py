@@ -505,16 +505,17 @@ def ia_vs_ia():
     print_map()
 
     state = check_win(v.board)
-
+    ia_one_level = int(input("IA ONE LEVEL 1-20000 ? "))
+    ia_two_level = int(input("IA TWO LEVEL 1-20000 ? "))
     while state == 0:
         try:
-            ia_choice = monte_carlo(v.board,2,1000)
+            ia_choice = monte_carlo(v.board,2,ia_one_level)
             print("Freedy played ", ia_choice + 1)
             v.board[check_empty_space(ia_choice,v.board)][ia_choice] = "2"
             state = check_win(v.board)
             print_map()
             
-            #ime.sleep(2)
+            #time.sleep(2)
             if state == 1:
                 print("FREDY WIN")
                 quit()
@@ -523,7 +524,7 @@ def ia_vs_ia():
                 print("FREDY LOOSE")
                 quit()
             
-            ia_choice = monte_carlo(v.board,1,10000)
+            ia_choice = monte_carlo(v.board,1,ia_two_level)
             print("Bob played", ia_choice + 1)
             v.board[check_empty_space(ia_choice,v.board)][ia_choice] = "1"
             state = check_win(v.board)
